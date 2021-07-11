@@ -6,7 +6,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <form id="form1" runat="server">
+    <div class="box_form">
         <h1>Detalle de Usuario</h1>
         <br />
         <asp:HiddenField ID="hdnCodigo" runat="server" />
@@ -30,5 +30,5 @@
             <asp:Button ID="btnEliminar" Visible="false" runat="server" Text="Eliminar Usuario" OnClick="btnEliminar_Click" />
             <asp:Label ID="lbMensaje2" runat="server" Text=""></asp:Label>
         </asp:Panel>
-    </form>
+    </div>
 </asp:Content>

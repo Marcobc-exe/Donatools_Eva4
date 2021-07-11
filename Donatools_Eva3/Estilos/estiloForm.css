@@ -5,7 +5,7 @@
     background: #E0ECF2;
 }
 
-#form1 {
+.box_form {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -17,7 +17,7 @@
     box-shadow: initial;
 }
 
-#form1 .Pass {
+.box_form .Pass {
     border: 0;
     background: #f1f2f6;
     display: block;
@@ -34,7 +34,7 @@
 }
 
 
-#form1 h1 {
+.box_form h1 {
     margin: 20px;
 }
 

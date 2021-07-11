@@ -5,52 +5,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Inicio Sesión</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link href="~/Estilos/style.css" rel="stylesheet" />
+        <link href="~/Estilos/estiloForm.css" rel="stylesheet" />
+    
     <asp:ContentPlaceHolder ID="head" runat="server">
-        
-        <link href="Estilos/style.css" rel="stylesheet" />
+    
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" >
-        <!-- Hay que hablar sobre como elaborar el navbar-->
-            <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" StaticDisplayLevels="1">
-                <Items>
-                    <asp:MenuItem  Text="ropa"></asp:MenuItem>
-                    <asp:MenuItem Text="comida"></asp:MenuItem>
-                    <asp:MenuItem Text="olla común"></asp:MenuItem>
-                    <asp:MenuItem Text="hogar de acogida"></asp:MenuItem>
-                    <asp:MenuItem Text="detalle"></asp:MenuItem>
-                    <asp:MenuItem Text="lista"></asp:MenuItem>
-                    <asp:MenuItem Text="registro"></asp:MenuItem>
-                    <asp:MenuItem Text="iniciar sesión"></asp:MenuItem>
-                </Items>
-            </asp:Menu>
-
-
-            <nav class="navbar navbar-expand-lg">
-                <div class="container">
-                    <a href="Index.aspx" class="navbar-brand ">
-                    <img src="Imagenes/logo.png" height="40" alt="" /></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mx-auto">
-                            <li class="nav-item"><a class="nav-link" href="donacionRopa.aspx">ropa</a></li>
-                            <li class="nav-item"><a class="nav-link" href="donacionComida.aspx">comida</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">olla común</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">hogar de acogida</a></li>
-                            <li class="nav-item"><a class="nav-link" href="detalleUsuario.aspx">DETALLE</a></li>
-                            <li class="nav-item"><a class="nav-link" href="listaUsuario.aspx">LISTA</a></li>
-                            <li class="nav-item"><a class="nav-link" href="registroUsuario.aspx">REGISTRO</a></li>
-                            <li class="nav-item active"><a class="nav-link" href="login.aspx">INICIAR SESIÓN</a></li>
-                        </ul>
-                    </div>
-                </div>
+    <form id="form2" runat="server">
+        <div>
+            <nav>
+                <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" StaticDisplayLevels="1">
+                    <Items>
+                        <asp:MenuItem  Text="ropa"></asp:MenuItem>
+                        <asp:MenuItem Text="comida"></asp:MenuItem>
+                        <asp:MenuItem Text="olla común"></asp:MenuItem>
+                        <asp:MenuItem Text="hogar de acogida"></asp:MenuItem>
+                        <asp:MenuItem Text="detalle"></asp:MenuItem>
+                        <asp:MenuItem Text="lista"></asp:MenuItem>
+                        <asp:MenuItem Text="registro"></asp:MenuItem>
+                        <asp:MenuItem Text="iniciar sesión"></asp:MenuItem>
+                    </Items>
+                </asp:Menu>
             </nav>
-        </asp:ContentPlaceHolder>
-    </div>
+        </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" >
+            </asp:ContentPlaceHolder>
+    </form>
 </body>
 </html>
