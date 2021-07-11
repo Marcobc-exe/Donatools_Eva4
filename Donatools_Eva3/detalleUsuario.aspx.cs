@@ -1,0 +1,99 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Donatools_Eva3.Clases;
+using Donatools_Eva3.Controllers;
+using System.Drawing;
+
+namespace Donatools_Eva3
+{
+    public partial class detalleUsuario : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Session["user"] == null)
+            {
+                Session["error"] = "Debe iniciar sesión";
+                Response.Redirect("login.aspx");
+            }
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = usuarioController.findUsuario(txtBuscar.Text);
+
+            if (usuario != null)
+            {
+                lblMensaje.Text = "Usuario encontrado";
+                lblMensaje.ForeColor = Color.Green;
+                Panel1.Visible = true;
+
+                //LLamado de los atributos del Usuario
+                hdnCodigo.Value = usuario.CodigoUsuario.ToString();// valor oculto
+                txtRut.Text = usuario.Rut;
+                txtNombre.Text = usuario.Nombre + " " + usuario.Apellido;
+                txtEdad.Text = usuario.Edad + " años";
+                rblGenero.SelectedValue = usuario.Genero;
+                txtMail.Text = usuario.Mail;
+                txtTelefono.Text = usuario.Telefono;
+                Session["user"] = usuario; //Se crea una sesión y se almacena.
+            }
+            else
+            {
+                lblMensaje.Text = "Usuario no encontrado";
+                lblMensaje.ForeColor = Color.Red;
+                Panel1.Visible = false;
+            }
+        }
+
+        protected void lnkEditar_Click(object sender, EventArgs e)
+        {
+            if (lnkEditar.Text.Equals("Modificar"))
+            {
+                txtRut.Enabled = true;
+                txtNombre.Enabled = true;
+                txtEdad.Enabled = true;
+                rblGenero.Enabled = true;
+                txtMail.Enabled = true;
+                txtTelefono.Enabled = true;
+                btnModificar.Visible = true;
+                btnEliminar.Visible = true;
+                lnkEditar.Text = "Cancelar";
+            }
+            else
+            {
+                txtRut.Enabled = false;
+                txtNombre.Enabled = false;
+                txtEdad.Enabled = false;
+                rblGenero.Enabled = false;
+                txtMail.Enabled = false;
+                txtTelefono.Enabled = false;
+                btnModificar.Visible = false;
+                btnEliminar.Visible = false;
+                lnkEditar.Text = "Modificar";
+            }
+        }
+
+        protected void btnModificar_Click(object sender, EventArgs e)
+        {
+            lbMensaje2.Text = usuarioController.editUsuario(hdnCodigo.Value, txtRut.Text, txtNombre.Text, txtEdad.Text, rblGenero.SelectedValue, txtMail.Text, txtTelefono.Text);
+            Usuario usuario = (Usuario)Session["user"];
+            txtRut.Text = usuario.Rut.ToString();
+            txtNombre.Text = usuario.Nombre;
+            txtEdad.Text = usuario.Edad.ToString();
+            rblGenero.SelectedValue = usuario.Genero;
+            txtMail.Text = usuario.Mail;
+            txtTelefono.Text = usuario.Telefono;
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            lbMensaje2.Text = usuarioController.deleteUsuario(hdnCodigo.Value);
+            Session["user"] = null;
+        }
+
+    }
+}
