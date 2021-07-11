@@ -8,7 +8,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <form id="form1" runat="server" class="auto-style1">
+    <div class="box_form">
         <asp:TextBox ID="txtTitulo" placeholder="Titulo" runat="server"></asp:TextBox>
         <asp:TextBox ID="txtDescripcion" placeholder="Descripcion" runat="server"></asp:TextBox>
         <asp:TextBox ID="txtFecha" placeholder="fecha" runat="server"></asp:TextBox>
@@ -20,5 +20,5 @@
         </asp:RadioButtonList>
         <asp:Button ID="btnCrearDonacion" runat="server" Text="Donar" OnClick="btnCrearDonacion_Click" />
         <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
-    </form>
+    </div>
 </asp:Content>

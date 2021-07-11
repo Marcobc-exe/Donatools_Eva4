@@ -12,6 +12,11 @@ namespace Donatools_Eva3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+           
+        }
+
+        protected void btnCrearDonacion_Click(object sender, EventArgs e)
+        {
             lblMensaje.Text = DonacionController.addDonacion("101", txtTitulo.Text, txtDescripcion.Text,
                 rblTipo.SelectedValue, "ahora", txtFecha.Text, true);
         }
