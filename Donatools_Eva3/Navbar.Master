@@ -16,19 +16,23 @@
 <body>
     <form id="form2" runat="server">
         <div>
-            <nav>
-                <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal" StaticDisplayLevels="1">
-                    <Items>
-                        <asp:MenuItem  Text="ropa"></asp:MenuItem>
-                        <asp:MenuItem Text="comida"></asp:MenuItem>
-                        <asp:MenuItem Text="olla común"></asp:MenuItem>
-                        <asp:MenuItem Text="hogar de acogida"></asp:MenuItem>
-                        <asp:MenuItem Text="detalle"></asp:MenuItem>
-                        <asp:MenuItem Text="lista"></asp:MenuItem>
-                        <asp:MenuItem Text="registro"></asp:MenuItem>
-                        <asp:MenuItem Text="iniciar sesión"></asp:MenuItem>
-                    </Items>
-                </asp:Menu>
+            <nav class="navbar" >
+                <div class="container">
+                    <a href="#" class="navbar-brand">
+                        <img src="Imagenes/logo.png"  alt="Donatools" /></a>
+                    <asp:Menu ID="Menu1" CssClass="ms-auto" runat="server" Orientation="Horizontal" StaticDisplayLevels="1">
+                        <Items>
+                            <asp:MenuItem Text="ropa"></asp:MenuItem>
+                            <asp:MenuItem Text="comida"></asp:MenuItem>
+                            <asp:MenuItem Text="olla común"></asp:MenuItem>
+                            <asp:MenuItem Text="hogar de acogida"></asp:MenuItem>
+                            <asp:MenuItem Text="detalle"></asp:MenuItem>
+                            <asp:MenuItem Text="lista"></asp:MenuItem>
+                            <asp:MenuItem Text="registro"></asp:MenuItem>
+                            <asp:MenuItem Text="iniciar sesión"></asp:MenuItem>
+                        </Items>
+                    </asp:Menu>
+                </div>
             </nav>
         </div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" >

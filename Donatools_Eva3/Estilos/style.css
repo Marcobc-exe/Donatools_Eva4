@@ -17,6 +17,7 @@ body {
     padding: 0;
 }
 
+
 .navbar .navbar-brand {
     margin-top: -15px;
     position: absolute;
@@ -40,7 +41,9 @@ body {
 .navbar .active {
     background-color: #51C4D3;
 }
-
+.navbar .navbar-brand img {
+    height: 35px;
+}
 /* Home */
 /* Boton donacion */
 .top-btn {
