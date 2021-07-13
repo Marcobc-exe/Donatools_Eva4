@@ -54,19 +54,29 @@ namespace Donatools_Eva3.Controllers
         }
 
         //Método de modificación de Usuario.
-        public static string editUsuario(string codigo, string nombre, string apellido, string edad, string genero, string mail, string telefono)
+        public static string editUsuario(
+            string codigo, 
+            string nombre, 
+            string apellido, 
+            string edad, 
+            string genero, 
+            string mail, 
+            string telefono, 
+            string rut)
         {
             try
             {
                 Usuario usuario = findUsuario(codigo);
                 if (usuario != null)
                 {
+                    usuario.CodigoUsuario = int.Parse(codigo);
                     usuario.Nombre = nombre;
                     usuario.Apellido = apellido;
                     usuario.Edad = int.Parse(edad);
                     usuario.Genero = genero;
                     usuario.Mail = mail;
                     usuario.Telefono = telefono;
+                    usuario.Rut = rut;
                     return "Usuario" + usuario.Nombre + " " + usuario.Apellido + "Modificado.";
                 }
                 else
@@ -76,7 +86,6 @@ namespace Donatools_Eva3.Controllers
             }
             catch (Exception e)
             {
-
                 return "Error: " + e.Message;
             }
 

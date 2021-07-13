@@ -18,8 +18,17 @@ namespace Donatools_Eva3
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            lblMensaje.Text = usuarioController.addUsuario(txtRut.Text, txtCodigo.Text, txtNombre.Text, txtApellido.Text, txtEdad.Text,
-                rblGenero.SelectedValue, txtMail.Text, txtTelefono.Text, txtUsername.Text, txtPassword.Text);
+            lblMensaje.Text = usuarioController.addUsuario(
+                txtRut.Text, 
+                txtCodigo.Text, 
+                txtNombre.Text, 
+                txtApellido.Text, 
+                txtEdad.Text,
+                rblGenero.SelectedValue, 
+                txtMail.Text, 
+                txtTelefono.Text, 
+                txtUsername.Text, 
+                txtPassword.Text);
         }
     }
 }

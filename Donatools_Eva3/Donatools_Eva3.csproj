@@ -75,6 +75,7 @@
     <Content Include="Estilos\Index.css" />
     <Content Include="Estilos\listaUsuario.css" />
     <Content Include="Estilos\style.css" />
+    <Content Include="Imagenes\loading.gif" />
     <Content Include="Imagenes\img1.jpg" />
     <Content Include="Imagenes\img2.jpg" />
     <Content Include="Imagenes\img3.jpg" />

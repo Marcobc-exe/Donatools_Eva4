@@ -16,8 +16,10 @@
         <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
         <br />
         <asp:Panel ID="Panel1" Visible="false" runat="server">
+            <asp:TextBox ID="txtCodigo" Enabled="false" runat="server"></asp:TextBox>
             <asp:TextBox ID="txtRut" Enabled="false" runat="server"></asp:TextBox>
             <asp:TextBox ID="txtNombre" Enabled="false" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtApellido" Enabled="false" runat="server"></asp:TextBox>
             <asp:TextBox ID="txtEdad" Enabled="false" runat="server"></asp:TextBox>
             <asp:RadioButtonList ID="rblGenero" Enabled="false" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
                 <asp:ListItem Value="f">Femenino</asp:ListItem>

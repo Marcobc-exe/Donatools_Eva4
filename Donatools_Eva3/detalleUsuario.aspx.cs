@@ -33,12 +33,14 @@ namespace Donatools_Eva3
 
                 //LLamado de los atributos del Usuario
                 hdnCodigo.Value = usuario.CodigoUsuario.ToString();// valor oculto
-                txtRut.Text = usuario.Rut;
-                txtNombre.Text = usuario.Nombre + " " + usuario.Apellido;
+                txtRut.Text = usuario.Rut.Normalize();
+                txtNombre.Text = usuario.Nombre;
+                txtApellido.Text = usuario.Apellido;
                 txtEdad.Text = usuario.Edad + " años";
                 rblGenero.SelectedValue = usuario.Genero;
                 txtMail.Text = usuario.Mail;
                 txtTelefono.Text = usuario.Telefono;
+                txtCodigo.Text = usuario.CodigoUsuario.ToString();
                 Session["user"] = usuario; //Se crea una sesión y se almacena.
             }
             else
@@ -55,6 +57,7 @@ namespace Donatools_Eva3
             {
                 txtRut.Enabled = true;
                 txtNombre.Enabled = true;
+                txtApellido.Enabled = true;
                 txtEdad.Enabled = true;
                 rblGenero.Enabled = true;
                 txtMail.Enabled = true;
@@ -67,6 +70,7 @@ namespace Donatools_Eva3
             {
                 txtRut.Enabled = false;
                 txtNombre.Enabled = false;
+                txtApellido.Enabled = false;
                 txtEdad.Enabled = false;
                 rblGenero.Enabled = false;
                 txtMail.Enabled = false;
@@ -79,14 +83,16 @@ namespace Donatools_Eva3
 
         protected void btnModificar_Click(object sender, EventArgs e)
         {
-            lbMensaje2.Text = usuarioController.editUsuario(hdnCodigo.Value, txtRut.Text, txtNombre.Text, txtEdad.Text, rblGenero.SelectedValue, txtMail.Text, txtTelefono.Text);
+            lbMensaje2.Text = usuarioController.editUsuario(
+                txtCodigo.Text, 
+                txtNombre.Text, 
+                txtApellido.Text, 
+                txtEdad.Text, 
+                rblGenero.SelectedValue, 
+                txtMail.Text, 
+                txtTelefono.Text, 
+                txtRut.Text);
             Usuario usuario = (Usuario)Session["user"];
-            txtRut.Text = usuario.Rut.ToString();
-            txtNombre.Text = usuario.Nombre;
-            txtEdad.Text = usuario.Edad.ToString();
-            rblGenero.SelectedValue = usuario.Genero;
-            txtMail.Text = usuario.Mail;
-            txtTelefono.Text = usuario.Telefono;
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)

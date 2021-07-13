@@ -12,7 +12,11 @@ namespace Donatools_Eva3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            if (Session["user"] == null)
+            {
+                Session["error"] = "Debe iniciar sesión";
+                Response.Redirect("login.aspx");
+            }
         }
 
         protected void btnCrearDonacion_Click(object sender, EventArgs e)

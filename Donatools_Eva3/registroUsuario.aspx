@@ -26,17 +26,18 @@
             <asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
             <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrar_Click" />
             <div class="panel_error">
-                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtUsername" runat="server" ErrorMessage="Nombre de Usuario Obligatorio" ForeColor="red"></asp:RequiredFieldValidator>
-                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtPassword" runat="server" ErrorMessage="Contraseña Obligatoria" ForeColor="red"></asp:RequiredFieldValidator>
-                <asp:CompareValidator Display="Dynamic" ControltoValidate="txtPassword" ControltoCompare="txtPass2" runat="server" ErrorMessage="Las contraseñas no coinciden" ForeColor="red"></asp:CompareValidator>
-                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtCodigo" runat="server" ErrorMessage="Codigo Obligatorio" ForeColor="red"></asp:RequiredFieldValidator>
-                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtRut" runat="server" ErrorMessage="Rut Obligatorio"  ForeColor="red"></asp:RequiredFieldValidator>
-                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtNombre" runat="server" ErrorMessage="Nombre Obligatorio" ForeColor="red"></asp:RequiredFieldValidator>
-                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtApellido" runat="server" ErrorMessage="Apellido Obligatorio" ForeColor="red"></asp:RequiredFieldValidator>
-                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtEdad" runat="server" ErrorMessage="Edad Obligatoria" ForeColor="red"></asp:RequiredFieldValidator>
-                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="rblGenero" runat="server" ErrorMessage="Genero Obligatorio"  ForeColor="red"></asp:RequiredFieldValidator>
-                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtTelefono" runat="server" ErrorMessage="Telefono Obligatorio"  ForeColor="red"></asp:RequiredFieldValidator>
-                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtMail" runat="server" ErrorMessage="Correo Obligatorio"  ForeColor="red"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator Display="Dynamic" ID="RegularExpressionValidator1" runat="server" ErrorMessage="Formato invalido, use el siguiente 'xxxxxxxx-(0-9 o K)' </br>" ForeColor="red" ControlToValidate="TxtRut" ValidationExpression="^[0-9]{8,9}[-|‐]{1}[0-9kK]{1}$"></asp:RegularExpressionValidator>
+                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtUsername" runat="server" ErrorMessage="Nombre de Usuario Obligatorio </br>" ForeColor="red"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtPassword" runat="server" ErrorMessage="Contraseña Obligatoria </br>" ForeColor="red"></asp:RequiredFieldValidator>
+                <asp:CompareValidator Display="Dynamic" ControltoValidate="txtPassword" ControltoCompare="txtPass2" runat="server" ErrorMessage="Las contraseñas no coinciden </br>" ForeColor="red"></asp:CompareValidator>
+                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtCodigo" runat="server" ErrorMessage="Codigo Obligatorio </br>" ForeColor="red"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtRut" runat="server" ErrorMessage="Rut Obligatorio </br>"  ForeColor="red"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtNombre" runat="server" ErrorMessage="Nombre Obligatorio </br>" ForeColor="red"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtApellido" runat="server" ErrorMessage="Apellido Obligatorio </br>" ForeColor="red"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtEdad" runat="server" ErrorMessage="Edad Obligatoria </br>" ForeColor="red"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="rblGenero" runat="server" ErrorMessage="Genero Obligatorio </br>"  ForeColor="red"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtTelefono" runat="server" ErrorMessage="Telefono Obligatorio </br>"  ForeColor="red"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator Display="Dynamic" ControltoValidate="txtMail" runat="server" ErrorMessage="Correo Obligatorio </br>"  ForeColor="red"></asp:RequiredFieldValidator>
             </div>
         </div>
         

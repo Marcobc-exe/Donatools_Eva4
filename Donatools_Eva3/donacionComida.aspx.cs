@@ -13,6 +13,7 @@ namespace Donatools_Eva3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             DonacionController.fillDonacion();
             string html = "";
             foreach (Donacion donacion in DonacionController.filterType("comida"))
@@ -24,6 +25,7 @@ namespace Donatools_Eva3
             }
 
             donacionContainer.InnerHtml = html;
+            
         }
     }
 }

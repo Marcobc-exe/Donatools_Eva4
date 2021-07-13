@@ -148,3 +148,26 @@ body {
     background-color: #4cb9c7;
     cursor: pointer;
 }
+.modal-content{
+    background: none;
+    border: 0;
+}
+.modal-content img {
+    width: 150px;
+    margin: 20px auto;
+}
+.loading-container{
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background-color: #00000090;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+    .loading-container #loading {
+        background-image: url('../Imagenes/loading.gif');
+        height: 150px;
+        width: 150px;
+    }
