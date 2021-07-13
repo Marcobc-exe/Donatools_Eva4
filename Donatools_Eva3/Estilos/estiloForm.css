@@ -6,12 +6,9 @@
 }
 
 .box_form {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    max-width: 850px;
     text-align: center;
-    margin: 50px;
+    margin: 50px auto;
     padding: 20px;
     background: #ffffff;
     box-shadow: initial;
@@ -100,3 +97,4 @@ input[type = submit]:hover {
 #btnEliminar:hover {
     background: #ee5253;
 }
+

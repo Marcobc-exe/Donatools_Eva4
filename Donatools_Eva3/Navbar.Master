@@ -8,7 +8,6 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
         <link href="~/Estilos/style.css" rel="stylesheet" />
         <link href="~/Estilos/estiloForm.css" rel="stylesheet" />
-    
     <asp:ContentPlaceHolder ID="head" runat="server">
     
     </asp:ContentPlaceHolder>
@@ -18,25 +17,30 @@
         <div>
             <nav class="navbar" >
                 <div class="container">
-                    <a href="#" class="navbar-brand">
+                    <a href="Index.aspx" class="navbar-brand">
                         <img src="Imagenes/logo.png"  alt="Donatools" /></a>
                     <asp:Menu ID="Menu1" CssClass="ms-auto" runat="server" Orientation="Horizontal" StaticDisplayLevels="1">
                         <Items>
-                            <asp:MenuItem Text="ropa"></asp:MenuItem>
-                            <asp:MenuItem Text="comida"></asp:MenuItem>
-                            <asp:MenuItem Text="olla común"></asp:MenuItem>
-                            <asp:MenuItem Text="hogar de acogida"></asp:MenuItem>
-                            <asp:MenuItem Text="detalle"></asp:MenuItem>
-                            <asp:MenuItem Text="lista"></asp:MenuItem>
-                            <asp:MenuItem Text="registro"></asp:MenuItem>
-                            <asp:MenuItem Text="iniciar sesión"></asp:MenuItem>
+                            <asp:MenuItem Text="ropa" NavigateUrl="~/donacionRopa.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="comida" NavigateUrl="~/donacionComida.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="detalle" NavigateUrl="~/detalleUsuario.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="lista" NavigateUrl="~/listaUsuario.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="cerrar Sesión" NavigateUrl="~/logout.aspx"></asp:MenuItem>
+                        </Items>
+                    </asp:Menu>
+                    <asp:Menu ID="Menu2" CssClass="ms-auto" runat="server" Orientation="Horizontal" StaticDisplayLevels="1">
+                        <Items>
+                            <asp:MenuItem Text="ropa" NavigateUrl="~/donacionRopa.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="comida" NavigateUrl="~/donacionComida.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="registro" NavigateUrl="~/registroUsuario.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="iniciar sesión" NavigateUrl="~/login.aspx"></asp:MenuItem>
                         </Items>
                     </asp:Menu>
                 </div>
             </nav>
         </div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" >
-            </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" >
+        </asp:ContentPlaceHolder>
     </form>
 </body>
 </html>

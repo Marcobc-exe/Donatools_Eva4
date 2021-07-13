@@ -7,22 +7,19 @@ using System.Web.UI.WebControls;
 
 namespace Donatools_Eva3
 {
-    public partial class Navbar : System.Web.UI.MasterPage
+    public partial class logout : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            
             if (!Page.IsPostBack)
             {
 
-                if (Session["user"] == null)
+                if (Session["user"] != null)
                 {
-                    Menu1.Visible = false;
-                    Menu2.Visible = true;
-                }
-                else
-                {
-                    Menu1.Visible = true;
-                    Menu2.Visible = false;
+                        Session.Abandon();
+                        Response.Redirect("login.aspx");
                 }
             }
         }
