@@ -28,9 +28,9 @@ namespace Donatools_Eva3
                                     select new
                                     {
                                         Código = m.id_usuario,
-                                        Rut = m.Persona.id_persona,
-                                        Nombre = m.Persona.nombre + " " + m.Persona.apellido,
-                                        Edad = m.Persona.edad + " años",
+                                        Rut = m.rut,
+                                        Nombre = m.nombre + " " + m.apellido,
+                                        Edad = m.edad + " años",
                                         Correo = m.mail,
                                         Telefono = m.telefono
                                     };

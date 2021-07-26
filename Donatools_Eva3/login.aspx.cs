@@ -25,7 +25,7 @@ namespace Donatools_Eva3
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            System.Threading.Thread.Sleep(3000);
+            System.Threading.Thread.Sleep(1000);
             Usuario usuario = loginController.login(txtUsername.Text, txtPassword.Text);
             if (usuario != null)
             {

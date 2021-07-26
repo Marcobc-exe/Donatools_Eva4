@@ -12,7 +12,7 @@ namespace Donatools_Eva3.Modelo
     using System;
     using System.Collections.Generic;
     
-    public partial class donacion
+    public partial class Donacion
     {
         public int id_donacion { get; set; }
         public string nomb_donacion { get; set; }
@@ -21,9 +21,9 @@ namespace Donatools_Eva3.Modelo
         public System.DateTime fecha_limite { get; set; }
         public Nullable<int> publico { get; set; }
         public int tipo { get; set; }
-        public int usuario { get; set; }
+        public int usuario_fk { get; set; }
     
-        public virtual tipo tipo1 { get; set; }
-        public virtual usuario usuario1 { get; set; }
+        public virtual Tipo Tipo1 { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }

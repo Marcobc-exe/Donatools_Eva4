@@ -33,11 +33,11 @@ namespace Donatools_Eva3
 
                 //LLamado de los atributos del Usuario
                 hdnCodigo.Value = usuario.id_usuario.ToString();// valor oculto
-                txtRut.Text = usuario.Persona.rut.Normalize();
-                txtNombre.Text = usuario.Persona.nombre;
-                txtApellido.Text = usuario.Persona.apellido;
-                txtEdad.Text = usuario.Persona.edad + " años";
-                rblGenero.SelectedValue = usuario.Persona.Genero1.genero1;
+                txtRut.Text = usuario.rut.Normalize();
+                txtNombre.Text = usuario.nombre;
+                txtApellido.Text = usuario.apellido;
+                txtEdad.Text = usuario.edad + " años";
+                rblGenero.SelectedValue = usuario.genero_fk.ToString();
                 txtMail.Text = usuario.mail;
                 txtTelefono.Text = usuario.telefono.ToString();
                 txtCodigo.Text = usuario.id_usuario.ToString();

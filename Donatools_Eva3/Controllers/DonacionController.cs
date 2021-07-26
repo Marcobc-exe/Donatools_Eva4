@@ -20,7 +20,7 @@ namespace Donatools_Eva3.Controllers
 
                 Donacion donacion = new Donacion()
                 {
-                    usuario = usuario.id_usuario,
+                    usuario_fk = usuario.id_usuario,
                     tipo = tipoDonacion.id_tipo,
                     nomb_donacion = nombre,
                     descripcion = descripcion,

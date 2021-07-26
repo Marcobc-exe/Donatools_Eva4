@@ -75,9 +75,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\dtdb.mdf" />
-    <Content Include="App_Data\dtdb_log.ldf">
-      <DependentUpon>dtdb.mdf</DependentUpon>
+    <Content Include="App_Data\donatoolsDB.mdf" />
+    <Content Include="App_Data\donatoolsDB_log.ldf">
+      <DependentUpon>donatoolsDB.mdf</DependentUpon>
     </Content>
     <Content Include="detalleUsuario.aspx" />
     <Content Include="donacionComida.aspx" />
@@ -176,10 +176,10 @@
     <Compile Include="logout.aspx.designer.cs">
       <DependentUpon>logout.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\donacion.cs">
+    <Compile Include="Modelo\Donacion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\genero.cs">
+    <Compile Include="Modelo\Genero.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Model1.Context.cs">
@@ -197,13 +197,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\persona.cs">
+    <Compile Include="Modelo\Tipo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\tipo.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modelo\usuario.cs">
+    <Compile Include="Modelo\Usuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Navbar.Master.cs">

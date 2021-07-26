@@ -12,23 +12,27 @@ namespace Donatools_Eva3.Modelo
     using System;
     using System.Collections.Generic;
     
-    public partial class usuario
+    public partial class Usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public usuario()
+        public Usuario()
         {
-            this.donacion = new HashSet<donacion>();
+            this.Donacion = new HashSet<Donacion>();
         }
     
         public int id_usuario { get; set; }
         public string username { get; set; }
-        public int usuario_ref { get; set; }
         public string mail { get; set; }
-        public int telefono { get; set; }
+        public string telefono { get; set; }
         public string password { get; set; }
+        public string rut { get; set; }
+        public string nombre { get; set; }
+        public string apellido { get; set; }
+        public int edad { get; set; }
+        public int genero_fk { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<donacion> donacion { get; set; }
-        public virtual persona persona { get; set; }
+        public virtual ICollection<Donacion> Donacion { get; set; }
+        public virtual Genero Genero { get; set; }
     }
 }

@@ -12,18 +12,18 @@ namespace Donatools_Eva3.Modelo
     using System;
     using System.Collections.Generic;
     
-    public partial class tipo
+    public partial class Tipo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tipo()
+        public Tipo()
         {
-            this.donacion = new HashSet<donacion>();
+            this.Donacion = new HashSet<Donacion>();
         }
     
         public int id_tipo { get; set; }
         public string tipo_donacion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<donacion> donacion { get; set; }
+        public virtual ICollection<Donacion> Donacion { get; set; }
     }
 }

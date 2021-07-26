@@ -32,17 +32,15 @@ namespace Donatools_Eva3
         }
         public void cargarDrop()
         {
-
             dropGenero.DataSource = from g in GeneroController.getAll()
                                      select new
                                      {
-                                         genero = g.genero1 ,
+                                         genero = g.tipo_genero,
                                          codigo = g.id_genero
                                      };
             dropGenero.DataValueField = "codigo";
             dropGenero.DataTextField = "genero";
             dropGenero.DataBind();
-
         }
     }
 }

@@ -13,10 +13,10 @@ namespace Donatools_Eva3.Modelo
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dtdbEntities : DbContext
+    public partial class donatoolsDBEntities : DbContext
     {
-        public dtdbEntities()
-            : base("name=dtdbEntities")
+        public donatoolsDBEntities()
+            : base("name=donatoolsDBEntities")
         {
         }
     
@@ -25,10 +25,9 @@ namespace Donatools_Eva3.Modelo
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<donacion> donacion { get; set; }
-        public virtual DbSet<genero> genero { get; set; }
-        public virtual DbSet<persona> persona { get; set; }
-        public virtual DbSet<tipo> tipo { get; set; }
-        public virtual DbSet<usuario> usuario { get; set; }
+        public virtual DbSet<Donacion> Donacion { get; set; }
+        public virtual DbSet<Genero> Genero { get; set; }
+        public virtual DbSet<Tipo> Tipo { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
     }
 }

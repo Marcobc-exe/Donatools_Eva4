@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using Donatools_Eva3.Modelo;
@@ -14,39 +17,70 @@ namespace Donatools_Eva3.Controllers
 
         //Métodos de clase y reglas de negocio
         //Método de registro de Usuario. - DONE
-        public static string addUsuario(string rut, string nombre, string apellido, string edad, string genero, string mail, string telefono, string username, string password)
+        public static string addUsuario(string rut, string nombre, string apellido, string edad, string generoID, string mail, string telefono, string username, string password)
         {
             try
             {
-                Genero generoID = dbc.Genero.Find(genero);
-                Persona persona = new Persona()
+                // Genero generoClase = new Genero();
+                Genero genero = dbc.Genero.Find(int.Parse(generoID));
+
+                // Comprobar que no exista el usuario
+                bool rutExiste = dbc.Usuario.Any(u => u.rut == rut);
+                bool mailExiste = dbc.Usuario.Any(u => u.mail == mail);
+                bool telefonoExiste = dbc.Usuario.Any(u => u.telefono == telefono);
+                bool usernameExiste = dbc.Usuario.Any(u => u.username == username);
+
+                if (rutExiste)
                 {
+                    return "Un usuario con este rut existe";
+                }
+                if (mailExiste )
+                {
+                    return "Un usuario con este mail existe";
+                }
+                if (telefonoExiste)
+                {
+                    return "Un usuario con este telefono existe";
+                }
+                if (usernameExiste)
+                {
+                    return "Un usuario con este nombre de usuario ya existe";
+                }
+
+                Usuario usuario = new Usuario()
+                {
+                    username = username,
+                    mail = mail,
+                    telefono = telefono,
                     rut = rut,
                     nombre = nombre,
                     apellido = apellido,
                     edad = int.Parse(edad),
-                    genero = generoID.id_genero
-                };
-                dbc.Persona.Add(persona);
-
-
-                Usuario usuario = new Usuario()
-                {
-                    
-                    username = username,
-                    usuario_ref = persona.id_persona,
-                    mail = mail,
-                    telefono = int.Parse(telefono),
+                    genero_fk = genero.id_genero,
                     password = password
-
                 };
+
+
+                
                 dbc.Usuario.Add(usuario);
+                dbc.SaveChanges();
                 return "Usuario agregado correctamente.";
+
             }
-            catch (Exception e)
+            catch (DbEntityValidationException dbEx)
             {
-                return "Error: " + e.Message;
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}",
+                            validationError.PropertyName,
+                            validationError.ErrorMessage);
+                    }
+                }
+                return "Error con alguna wea";
             }
+            
         }
 
         //Método de búsqueda de Usuario y persona. - DONE
@@ -74,14 +108,14 @@ namespace Donatools_Eva3.Controllers
                 Genero generoID = dbc.Genero.Find(genero);
                 if (usuario != null)
                 {
-                    usuario.Persona.nombre = nombre;
-                    usuario.Persona.apellido = apellido;
-                    usuario.Persona.edad = int.Parse(edad);
-                    usuario.Persona.genero = generoID.id_genero;
-                    usuario.Persona.rut = rut;
+                    usuario.nombre = nombre;
+                    usuario.apellido = apellido;
+                    usuario.edad = int.Parse(edad);
+                    usuario.genero_fk = generoID.id_genero;
                     usuario.mail = mail;
-                    usuario.telefono = int.Parse(telefono);
-                    return "Usuario" + usuario.Persona.nombre + " " + usuario.Persona.apellido + "Modificado.";
+                    usuario.telefono = telefono;
+                    usuario.rut = rut;
+                    return "Usuario" + usuario.nombre + " " + usuario.apellido + "Modificado.";
                 }
                 else
                 {
