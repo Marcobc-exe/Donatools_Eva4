@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Donatools_Eva3.Clases;
+using Donatools_Eva3.Modelo;
 using Donatools_Eva3.Controllers;
 using System.Drawing;
 
@@ -32,15 +32,15 @@ namespace Donatools_Eva3
                 Panel1.Visible = true;
 
                 //LLamado de los atributos del Usuario
-                hdnCodigo.Value = usuario.CodigoUsuario.ToString();// valor oculto
-                txtRut.Text = usuario.Rut.Normalize();
-                txtNombre.Text = usuario.Nombre;
-                txtApellido.Text = usuario.Apellido;
-                txtEdad.Text = usuario.Edad + " años";
-                rblGenero.SelectedValue = usuario.Genero;
-                txtMail.Text = usuario.Mail;
-                txtTelefono.Text = usuario.Telefono;
-                txtCodigo.Text = usuario.CodigoUsuario.ToString();
+                hdnCodigo.Value = usuario.id_usuario.ToString();// valor oculto
+                txtRut.Text = usuario.Persona.rut.Normalize();
+                txtNombre.Text = usuario.Persona.nombre;
+                txtApellido.Text = usuario.Persona.apellido;
+                txtEdad.Text = usuario.Persona.edad + " años";
+                rblGenero.SelectedValue = usuario.Persona.Genero1.genero1;
+                txtMail.Text = usuario.mail;
+                txtTelefono.Text = usuario.telefono.ToString();
+                txtCodigo.Text = usuario.id_usuario.ToString();
                 Session["user"] = usuario; //Se crea una sesión y se almacena.
             }
             else

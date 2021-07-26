@@ -13,22 +13,36 @@ namespace Donatools_Eva3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            usuarioController.fillUsuarios();
+            cargarDrop();
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
             lblMensaje.Text = usuarioController.addUsuario(
                 txtRut.Text, 
-                txtCodigo.Text, 
                 txtNombre.Text, 
                 txtApellido.Text, 
                 txtEdad.Text,
-                rblGenero.SelectedValue, 
+                dropGenero.SelectedValue, 
                 txtMail.Text, 
                 txtTelefono.Text, 
                 txtUsername.Text, 
-                txtPassword.Text);
+                txtPassword.Text
+                );
+        }
+        public void cargarDrop()
+        {
+
+            dropGenero.DataSource = from g in GeneroController.getAll()
+                                     select new
+                                     {
+                                         genero = g.genero1 ,
+                                         codigo = g.id_genero
+                                     };
+            dropGenero.DataValueField = "codigo";
+            dropGenero.DataTextField = "genero";
+            dropGenero.DataBind();
+
         }
     }
 }

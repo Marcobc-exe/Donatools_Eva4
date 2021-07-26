@@ -27,12 +27,12 @@ namespace Donatools_Eva3
             grdUsuario.DataSource = from m in usuarioController.getAll()
                                     select new
                                     {
-                                        Código = m.CodigoUsuario,
-                                        Rut = m.Rut,
-                                        Nombre = m.Nombre + " " + m.Apellido,
-                                        Edad = m.Edad + " años",
-                                        Correo = m.Mail,
-                                        Telefono = m.Telefono
+                                        Código = m.id_usuario,
+                                        Rut = m.Persona.id_persona,
+                                        Nombre = m.Persona.nombre + " " + m.Persona.apellido,
+                                        Edad = m.Persona.edad + " años",
+                                        Correo = m.mail,
+                                        Telefono = m.telefono
                                     };
             grdUsuario.DataBind();
         }

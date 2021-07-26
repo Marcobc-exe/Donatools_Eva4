@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Donatools_Eva3.Clases;
+using Donatools_Eva3.Modelo;
 
 namespace Donatools_Eva3.Controllers
 {
@@ -12,9 +12,9 @@ namespace Donatools_Eva3.Controllers
         {
             foreach (Usuario usuario in usuarioController.getAll())
             {
-                if (usuario.Username.Equals(username))
+                if (usuario.username.Equals(username))
                 {
-                    if (usuario.Password.Equals(password))
+                    if (usuario.password.Equals(password))
                     {
                         return usuario;
                     }

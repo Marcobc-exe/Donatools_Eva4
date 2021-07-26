@@ -2,36 +2,45 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Donatools_Eva3.Clases;
+using Donatools_Eva3.Modelo;
+//using Donatools_Eva3.Clases;
+
 
 namespace Donatools_Eva3.Controllers
 {
     public class usuarioController
     {
-        private static List<Usuario> listaUsuario = new List<Usuario>();
+        private static donatoolsDBEntities1 dbc = new donatoolsDBEntities1();
 
         //Métodos de clase y reglas de negocio
-        //Método de registro de Usuario.
-        public static string addUsuario(string rut, string codigo, string nombre, string apellido, string edad, string genero, string mail, string telefono, string username, string password)
+        //Método de registro de Usuario. - DONE
+        public static string addUsuario(string rut, string nombre, string apellido, string edad, string genero, string mail, string telefono, string username, string password)
         {
             try
             {
+                Genero generoID = dbc.Genero.Find(genero);
+                Persona persona = new Persona()
+                {
+                    rut = rut,
+                    nombre = nombre,
+                    apellido = apellido,
+                    edad = int.Parse(edad),
+                    genero = generoID.id_genero
+                };
+                dbc.Persona.Add(persona);
+
+
                 Usuario usuario = new Usuario()
                 {
-                    CodigoUsuario = int.Parse(codigo),
-                    Rut = rut,
-                    Nombre = nombre,
-                    Apellido = apellido,
-                    Edad = int.Parse(edad),
-                    Genero = genero,
-                    Mail = mail,
-                    Telefono = telefono,
-                    Password = password,
-                    Username = username
+                    
+                    username = username,
+                    usuario_ref = persona.id_persona,
+                    mail = mail,
+                    telefono = int.Parse(telefono),
+                    password = password
 
                 };
-
-                listaUsuario.Add(usuario);
+                dbc.Usuario.Add(usuario);
                 return "Usuario agregado correctamente.";
             }
             catch (Exception e)
@@ -40,22 +49,17 @@ namespace Donatools_Eva3.Controllers
             }
         }
 
-        //Método de búsqueda de Usuario.
+        //Método de búsqueda de Usuario y persona. - DONE
         public static Usuario findUsuario(string codigoUsuario)
         {
-            foreach (Usuario usuario in listaUsuario)
-            {
-                if (usuario.CodigoUsuario == int.Parse(codigoUsuario))
-                {
-                    return usuario;
-                }
-            }
-            return null;
+            Usuario usuario = dbc.Usuario.Find(int.Parse(codigoUsuario));
+            return usuario;
+
         }
 
-        //Método de modificación de Usuario.
+        //Método de modificación de Usuario. - DONE
         public static string editUsuario(
-            string codigo, 
+            string codigoUsuario,
             string nombre, 
             string apellido, 
             string edad, 
@@ -66,18 +70,18 @@ namespace Donatools_Eva3.Controllers
         {
             try
             {
-                Usuario usuario = findUsuario(codigo);
+                Usuario usuario = findUsuario(codigoUsuario);
+                Genero generoID = dbc.Genero.Find(genero);
                 if (usuario != null)
                 {
-                    usuario.CodigoUsuario = int.Parse(codigo);
-                    usuario.Nombre = nombre;
-                    usuario.Apellido = apellido;
-                    usuario.Edad = int.Parse(edad);
-                    usuario.Genero = genero;
-                    usuario.Mail = mail;
-                    usuario.Telefono = telefono;
-                    usuario.Rut = rut;
-                    return "Usuario" + usuario.Nombre + " " + usuario.Apellido + "Modificado.";
+                    usuario.Persona.nombre = nombre;
+                    usuario.Persona.apellido = apellido;
+                    usuario.Persona.edad = int.Parse(edad);
+                    usuario.Persona.genero = generoID.id_genero;
+                    usuario.Persona.rut = rut;
+                    usuario.mail = mail;
+                    usuario.telefono = int.Parse(telefono);
+                    return "Usuario" + usuario.Persona.nombre + " " + usuario.Persona.apellido + "Modificado.";
                 }
                 else
                 {
@@ -92,13 +96,14 @@ namespace Donatools_Eva3.Controllers
 
         }
 
-        //Método de eliminación de Usuario.
+        //Método de eliminación de Usuario. - DONE
         public static string deleteUsuario(string codigo)
         {
             Usuario usuario = findUsuario(codigo);
             if (usuario != null)
             {
-                listaUsuario.Remove(usuario);
+                dbc.Usuario.Remove(usuario);
+                dbc.SaveChanges();
                 return "Usuario eliminado correctamente.";
             }
             else
@@ -107,28 +112,13 @@ namespace Donatools_Eva3.Controllers
             }
         }
 
-        //Método de listar todos los Usuarios.
+        //Método de listar todos los Usuarios. - DONE
         public static List<Usuario> getAll()
         {
-            return listaUsuario;
+            var usuarios = from u in dbc.Usuario select u;
+
+            return usuarios.ToList();
         }
 
-        //Método temporal, de llenado automatico precargando listado de Usuarios.
-        public static void fillUsuarios()
-        {
-            if (usuarioController.getAll().Count == 0)
-            {
-                usuarioController.addUsuario("1-1", "101", "Pepe", "Juanin", "23", "m", "pepe123@gmail.com", "92125044", "user1", "1234");
-                usuarioController.addUsuario("1-2", "102", "Lucho", "Carcamo", "32", "m", "lucho123@gmail.com", "92123055", "user2", "1234");
-                usuarioController.addUsuario("1-3", "103", "María", "Castillo", "25", "f", "maria123@gmail.com", "92145644", "user3", "1234");
-                usuarioController.addUsuario("1-4", "104", "Ana", "Lara", "23", "f", "ana123@gmail.com", "92167844", "user4", "1234");
-            }
-
-        }
-
-        public static List<Usuario> listaUsuarios()
-        {
-            return listaUsuario;
-        }
     }
 }

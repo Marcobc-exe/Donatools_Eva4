@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Donatools_Eva3.Clases;
+using Donatools_Eva3.Modelo;
 using Donatools_Eva3.Controllers;
 using System.Drawing;
 
@@ -14,7 +14,6 @@ namespace Donatools_Eva3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            usuarioController.fillUsuarios();
 
             if (Session["error"] != null)
             {
