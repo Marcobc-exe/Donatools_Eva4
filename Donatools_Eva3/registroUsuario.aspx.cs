@@ -13,7 +13,10 @@ namespace Donatools_Eva3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            cargarDrop();
+            if (!IsPostBack)
+            {
+                cargarDrop();
+            }
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
@@ -27,7 +30,7 @@ namespace Donatools_Eva3
                 txtMail.Text, 
                 txtTelefono.Text, 
                 txtUsername.Text, 
-                txtPassword.Text
+                usuarioController.GetMD5(txtPassword.Text)
                 );
         }
         public void cargarDrop()

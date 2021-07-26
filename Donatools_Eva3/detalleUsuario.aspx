@@ -21,10 +21,7 @@
             <asp:TextBox ID="txtNombre" Enabled="false" runat="server"></asp:TextBox>
             <asp:TextBox ID="txtApellido" Enabled="false" runat="server"></asp:TextBox>
             <asp:TextBox ID="txtEdad" Enabled="false" runat="server"></asp:TextBox>
-            <asp:RadioButtonList ID="rblGenero" Enabled="false" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow">
-                <asp:ListItem Value="f">Femenino</asp:ListItem>
-                <asp:ListItem Value="m">Masculino</asp:ListItem>
-            </asp:RadioButtonList>
+            <asp:DropDownList ID="dropGenero" runat="server"></asp:DropDownList>
             <asp:TextBox ID="txtMail" Enabled="false" runat="server"></asp:TextBox>
             <asp:TextBox ID="txtTelefono" Enabled="false" runat="server"></asp:TextBox>
             <asp:LinkButton ID="lnkEditar" runat="server" OnClick="lnkEditar_Click">Modificar</asp:LinkButton>

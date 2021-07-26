@@ -166,8 +166,50 @@ body {
     justify-content:center;
     align-items: center;
 }
-    .loading-container #loading {
-        background-image: url('../Imagenes/loading.gif');
-        height: 150px;
-        width: 150px;
+.loading-container #loading {
+    background-image: url('../Imagenes/loading.gif');
+    height: 150px;
+    width: 150px;
+}
+.calendar-btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    background-color: #51C4D3;
+    color: white;
+    padding: 0;
+    overflow: hidden;
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+}
+.calendar-btn:hover {
+    background-color: #4db4c1;
+}
+.calendar-btn a{
+    height: 100%;
+    width: 100%;
+    padding: 8px 10px;
+}
+.calendar-btn a svg {
+    color: #132C33;
+}
+.cal-container{
+    position: relative;
+}
+.calendar-box {
+    position: absolute;
+    bottom: -218px;
+    right: 0;
+    background-color: white;
+}
+.calendar-box table{
+    margin-top: 0;
+}
+.calendar-box .bg-secondary {
+    background-color: #f2f2f2 !important;
+    color: #b8b8b8;
+}
+    .calendar-box .bg-success {
+        background-color: #82e0c3 !important;
+        color: #0c825d !important;
     }

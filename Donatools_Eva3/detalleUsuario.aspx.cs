@@ -19,6 +19,10 @@ namespace Donatools_Eva3
                 Session["error"] = "Debe iniciar sesión";
                 Response.Redirect("login.aspx");
             }
+            if (!IsPostBack)
+            {
+                cargarDrop();
+            }
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -37,7 +41,7 @@ namespace Donatools_Eva3
                 txtNombre.Text = usuario.nombre;
                 txtApellido.Text = usuario.apellido;
                 txtEdad.Text = usuario.edad + " años";
-                rblGenero.SelectedValue = usuario.genero_fk.ToString();
+                dropGenero.SelectedValue = usuario.genero_fk.ToString();
                 txtMail.Text = usuario.mail;
                 txtTelefono.Text = usuario.telefono.ToString();
                 txtCodigo.Text = usuario.id_usuario.ToString();
@@ -59,7 +63,7 @@ namespace Donatools_Eva3
                 txtNombre.Enabled = true;
                 txtApellido.Enabled = true;
                 txtEdad.Enabled = true;
-                rblGenero.Enabled = true;
+                dropGenero.Enabled = true;
                 txtMail.Enabled = true;
                 txtTelefono.Enabled = true;
                 btnModificar.Visible = true;
@@ -72,7 +76,7 @@ namespace Donatools_Eva3
                 txtNombre.Enabled = false;
                 txtApellido.Enabled = false;
                 txtEdad.Enabled = false;
-                rblGenero.Enabled = false;
+                dropGenero.Enabled = false;
                 txtMail.Enabled = false;
                 txtTelefono.Enabled = false;
                 btnModificar.Visible = false;
@@ -87,8 +91,8 @@ namespace Donatools_Eva3
                 txtCodigo.Text, 
                 txtNombre.Text, 
                 txtApellido.Text, 
-                txtEdad.Text, 
-                rblGenero.SelectedValue, 
+                txtEdad.Text,
+                dropGenero.SelectedValue, 
                 txtMail.Text, 
                 txtTelefono.Text, 
                 txtRut.Text);
@@ -99,6 +103,19 @@ namespace Donatools_Eva3
         {
             lbMensaje2.Text = usuarioController.deleteUsuario(hdnCodigo.Value);
             Session["user"] = null;
+        }
+
+        public void cargarDrop()
+        {
+            dropGenero.DataSource = from g in GeneroController.getAll()
+                                    select new
+                                    {
+                                        genero = g.tipo_genero,
+                                        codigo = g.id_genero
+                                    };
+            dropGenero.DataValueField = "codigo";
+            dropGenero.DataTextField = "genero";
+            dropGenero.DataBind();
         }
 
     }

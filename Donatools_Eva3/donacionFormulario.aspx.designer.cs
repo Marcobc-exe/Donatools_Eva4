@@ -42,6 +42,24 @@ namespace Donatools_Eva3
         protected global::System.Web.UI.WebControls.TextBox txtFecha;
 
         /// <summary>
+        /// Control calLB.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton calLB;
+
+        /// <summary>
+        /// Control calFecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar calFecha;
+
+        /// <summary>
         /// Control rblTipo.
         /// </summary>
         /// <remarks>

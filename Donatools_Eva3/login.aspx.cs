@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using Donatools_Eva3.Modelo;
 using Donatools_Eva3.Controllers;
 using System.Drawing;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Donatools_Eva3
 {
@@ -26,7 +28,8 @@ namespace Donatools_Eva3
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             System.Threading.Thread.Sleep(1000);
-            Usuario usuario = loginController.login(txtUsername.Text, txtPassword.Text);
+            Usuario usuario = loginController.login(txtUsername.Text, usuarioController.GetMD5(txtPassword.Text));
+
             if (usuario != null)
             {
                 Session["user"] = usuario;
@@ -38,5 +41,7 @@ namespace Donatools_Eva3
                 lblMensaje2.Text = "Datos ingresados no coinciden";
             }
         }
+
+        
     }
 }

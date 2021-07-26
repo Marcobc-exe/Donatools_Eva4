@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using Donatools_Eva3.Modelo;
@@ -11,12 +13,12 @@ namespace Donatools_Eva3.Controllers
     {
         private static donatoolsDBEntities dbc = new donatoolsDBEntities();
 
-        public static string addDonacion(string idUsuario, string nombre, string descripcion, string tipo, string fecha_publicacion, string fecha_limite, bool publico)
+        public static string addDonacion(string idUsuario, string nombre, string descripcion, string tipoID, string fecha_publicacion, string fecha_limite, bool publico)
         {
             try
             {   
                 Usuario usuario = dbc.Usuario.Find(int.Parse(idUsuario));
-                Tipo tipoDonacion = dbc.Tipo.Find(tipo);
+                Tipo tipoDonacion = dbc.Tipo.Find(int.Parse(tipoID));
 
                 Donacion donacion = new Donacion()
                 {
@@ -33,15 +35,23 @@ namespace Donatools_Eva3.Controllers
                 dbc.SaveChanges();
                 return "Donacion agregada correctamente.";
             }
-            catch (Exception e)
+            catch (DbEntityValidationException dbEx)
             {
-
-                return "Error: " + e.Message;
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}",
+                            validationError.PropertyName,
+                            validationError.ErrorMessage);
+                    }
+                }
+                return "Error con algun elemento";
             }
         }
 
         // Filtrar donaciones por tipo - DONE
-        public static List<Donacion> filterType(string tipo)
+        public static List<Donacion> filterType(int tipo)
         {
             List<Donacion> listaDonacion = getAll();
             List<Donacion> filterList = new List<Donacion>();
@@ -50,7 +60,7 @@ namespace Donatools_Eva3.Controllers
             {
                 foreach (Donacion donacion in listaDonacion)
                 {
-                    if (donacion.tipo == int.Parse(tipo) && donacion.publico == 1)
+                    if (donacion.tipo == tipo && donacion.publico == 1)
                     {
                         filterList.Add(donacion);
                     }
