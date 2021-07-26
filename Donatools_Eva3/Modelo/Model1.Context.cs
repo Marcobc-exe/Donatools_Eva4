@@ -13,10 +13,10 @@ namespace Donatools_Eva3.Modelo
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class donatoolsDBEntities1 : DbContext
+    public partial class donatoolsDBEntities : DbContext
     {
-        public donatoolsDBEntities1()
-            : base("name=donatoolsDBEntities1")
+        public donatoolsDBEntities()
+            : base("name=donatoolsDBEntities")
         {
         }
     

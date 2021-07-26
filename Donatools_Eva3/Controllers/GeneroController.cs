@@ -8,7 +8,7 @@ namespace Donatools_Eva3.Controllers
 {
     public class GeneroController
     {
-        private static donatoolsDBEntities1 dbc = new donatoolsDBEntities1();
+        private static donatoolsDBEntities dbc = new donatoolsDBEntities();
 
         public static List<Genero> getAll()
         {

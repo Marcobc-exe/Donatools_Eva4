@@ -251,7 +251,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="donatoolsDBEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="donatoolsDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Donacion" EntityType="Self.Donacion" />
           <EntitySet Name="Genero" EntityType="Self.Genero" />
           <EntitySet Name="Persona" EntityType="Self.Persona" />
@@ -279,7 +279,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="donatoolsDBModelStoreContainer" CdmEntityContainer="donatoolsDBEntities1">
+        <EntityContainerMapping StorageEntityContainer="donatoolsDBModelStoreContainer" CdmEntityContainer="donatoolsDBEntities">
           <EntitySetMapping Name="Donacion">
             <EntityTypeMapping TypeName="donatoolsDBModel.Donacion">
               <MappingFragment StoreEntitySet="Donacion">

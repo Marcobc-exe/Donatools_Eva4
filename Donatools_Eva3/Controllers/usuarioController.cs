@@ -10,7 +10,7 @@ namespace Donatools_Eva3.Controllers
 {
     public class usuarioController
     {
-        private static donatoolsDBEntities1 dbc = new donatoolsDBEntities1();
+        private static donatoolsDBEntities dbc = new donatoolsDBEntities();
 
         //Métodos de clase y reglas de negocio
         //Método de registro de Usuario. - DONE

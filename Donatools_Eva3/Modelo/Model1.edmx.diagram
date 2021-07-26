@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b0ed79ac673c4ddeae3fd010849ba940" Name="Diagram1">
+      <Diagram DiagramId="4cb3e22096fb42c181d2d95e9e71cb1f" Name="Diagram1">
         <EntityTypeShape EntityType="donatoolsDBModel.Donacion" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="donatoolsDBModel.Genero" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="donatoolsDBModel.Persona" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />

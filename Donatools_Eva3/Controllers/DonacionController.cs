@@ -9,7 +9,7 @@ namespace Donatools_Eva3.Controllers
 {
     public class DonacionController
     {
-        private static donatoolsDBEntities1 dbc = new donatoolsDBEntities1();
+        private static donatoolsDBEntities dbc = new donatoolsDBEntities();
 
         public static string addDonacion(string idUsuario, string nombre, string descripcion, string tipo, string fecha_publicacion, string fecha_limite, bool publico)
         {
