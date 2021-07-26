@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dtdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="donacion">
+          <Key>
+            <PropertyRef Name="id_donacion" />
+          </Key>
+          <Property Name="id_donacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomb_donacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fecha_publicacion" Type="date" Nullable="false" />
+          <Property Name="fecha_limite" Type="date" Nullable="false" />
+          <Property Name="publico" Type="int" />
+          <Property Name="tipo" Type="int" Nullable="false" />
+          <Property Name="usuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="genero">
+          <Key>
+            <PropertyRef Name="id_genero" />
+          </Key>
+          <Property Name="id_genero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="genero" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="persona">
+          <Key>
+            <PropertyRef Name="id_persona" />
+          </Key>
+          <Property Name="id_persona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rut" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="edad" Type="int" Nullable="false" />
+          <Property Name="genero" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo">
+          <Key>
+            <PropertyRef Name="id_tipo" />
+          </Key>
+          <Property Name="id_tipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo_donacion" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usuario_ref" Type="int" Nullable="false" />
+          <Property Name="mail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefono" Type="int" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_genero">
+          <End Role="genero" Type="Self.genero" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="persona" Type="Self.persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genero">
+              <PropertyRef Name="id_genero" />
+            </Principal>
+            <Dependent Role="persona">
+              <PropertyRef Name="genero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tipoDonacion">
+          <End Role="tipo" Type="Self.tipo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="donacion" Type="Self.donacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo">
+              <PropertyRef Name="id_tipo" />
+            </Principal>
+            <Dependent Role="donacion">
+              <PropertyRef Name="tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="donacion" Type="Self.donacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="donacion">
+              <PropertyRef Name="usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuarioref">
+          <End Role="persona" Type="Self.persona" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="id_persona" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="usuario_ref" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dtdbModelStoreContainer">
+          <EntitySet Name="donacion" EntityType="Self.donacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="genero" EntityType="Self.genero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo" EntityType="Self.tipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_genero" Association="Self.FK_genero">
+            <End Role="genero" EntitySet="genero" />
+            <End Role="persona" EntitySet="persona" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tipoDonacion" Association="Self.FK_tipoDonacion">
+            <End Role="tipo" EntitySet="tipo" />
+            <End Role="donacion" EntitySet="donacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario" Association="Self.FK_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="donacion" EntitySet="donacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuarioref" Association="Self.FK_usuarioref">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dtdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="donacion">
+          <Key>
+            <PropertyRef Name="id_donacion" />
+          </Key>
+          <Property Name="id_donacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomb_donacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha_publicacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_limite" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="publico" Type="Int32" />
+          <Property Name="tipo" Type="Int32" Nullable="false" />
+          <Property Name="usuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tipo1" Relationship="Self.FK_tipoDonacion" FromRole="donacion" ToRole="tipo" />
+          <NavigationProperty Name="usuario1" Relationship="Self.FK_usuario" FromRole="donacion" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="genero">
+          <Key>
+            <PropertyRef Name="id_genero" />
+          </Key>
+          <Property Name="id_genero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="genero1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="persona" Relationship="Self.FK_genero" FromRole="genero" ToRole="persona" />
+        </EntityType>
+        <EntityType Name="persona">
+          <Key>
+            <PropertyRef Name="id_persona" />
+          </Key>
+          <Property Name="id_persona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rut" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="edad" Type="Int32" Nullable="false" />
+          <Property Name="genero" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="genero1" Relationship="Self.FK_genero" FromRole="persona" ToRole="genero" />
+          <NavigationProperty Name="usuario" Relationship="Self.FK_usuarioref" FromRole="persona" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="tipo">
+          <Key>
+            <PropertyRef Name="id_tipo" />
+          </Key>
+          <Property Name="id_tipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo_donacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="donacion" Relationship="Self.FK_tipoDonacion" FromRole="tipo" ToRole="donacion" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usuario_ref" Type="Int32" Nullable="false" />
+          <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="Int32" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="donacion" Relationship="Self.FK_usuario" FromRole="usuario" ToRole="donacion" />
+          <NavigationProperty Name="persona" Relationship="Self.FK_usuarioref" FromRole="usuario" ToRole="persona" />
+        </EntityType>
+        <Association Name="FK_tipoDonacion">
+          <End Role="tipo" Type="Self.tipo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="donacion" Type="Self.donacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo">
+              <PropertyRef Name="id_tipo" />
+            </Principal>
+            <Dependent Role="donacion">
+              <PropertyRef Name="tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuario">
+          <End Role="usuario" Type="Self.usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="donacion" Type="Self.donacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="donacion">
+              <PropertyRef Name="usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_genero">
+          <End Role="genero" Type="Self.genero" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="persona" Type="Self.persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genero">
+              <PropertyRef Name="id_genero" />
+            </Principal>
+            <Dependent Role="persona">
+              <PropertyRef Name="genero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuarioref">
+          <End Role="persona" Type="Self.persona" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="id_persona" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="usuario_ref" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dtdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="donacion" EntityType="Self.donacion" />
+          <EntitySet Name="genero" EntityType="Self.genero" />
+          <EntitySet Name="persona" EntityType="Self.persona" />
+          <EntitySet Name="tipo" EntityType="Self.tipo" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <AssociationSet Name="FK_tipoDonacion" Association="Self.FK_tipoDonacion">
+            <End Role="tipo" EntitySet="tipo" />
+            <End Role="donacion" EntitySet="donacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuario" Association="Self.FK_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="donacion" EntitySet="donacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_genero" Association="Self.FK_genero">
+            <End Role="genero" EntitySet="genero" />
+            <End Role="persona" EntitySet="persona" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuarioref" Association="Self.FK_usuarioref">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dtdbModelStoreContainer" CdmEntityContainer="dtdbEntities">
+          <EntitySetMapping Name="donacion">
+            <EntityTypeMapping TypeName="dtdbModel.donacion">
+              <MappingFragment StoreEntitySet="donacion">
+                <ScalarProperty Name="id_donacion" ColumnName="id_donacion" />
+                <ScalarProperty Name="nomb_donacion" ColumnName="nomb_donacion" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fecha_publicacion" ColumnName="fecha_publicacion" />
+                <ScalarProperty Name="fecha_limite" ColumnName="fecha_limite" />
+                <ScalarProperty Name="publico" ColumnName="publico" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="genero">
+            <EntityTypeMapping TypeName="dtdbModel.genero">
+              <MappingFragment StoreEntitySet="genero">
+                <ScalarProperty Name="id_genero" ColumnName="id_genero" />
+                <ScalarProperty Name="genero1" ColumnName="genero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="persona">
+            <EntityTypeMapping TypeName="dtdbModel.persona">
+              <MappingFragment StoreEntitySet="persona">
+                <ScalarProperty Name="id_persona" ColumnName="id_persona" />
+                <ScalarProperty Name="rut" ColumnName="rut" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="genero" ColumnName="genero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo">
+            <EntityTypeMapping TypeName="dtdbModel.tipo">
+              <MappingFragment StoreEntitySet="tipo">
+                <ScalarProperty Name="id_tipo" ColumnName="id_tipo" />
+                <ScalarProperty Name="tipo_donacion" ColumnName="tipo_donacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="dtdbModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="usuario_ref" ColumnName="usuario_ref" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
